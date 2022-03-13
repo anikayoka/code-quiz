@@ -1,1 +1,1 @@
-# code-quiz
+# Quiz Challenge
