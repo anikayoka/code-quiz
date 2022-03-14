@@ -10,6 +10,7 @@ body {
   background-color: lightcyan;
 }
 
+/* STYLE HEADER */
 header a {
   position: absolute;
   width: auto;
@@ -17,7 +18,11 @@ header a {
   text-decoration: none;
   font-size: 25px;
   font-weight: 800px;
-  /* background-color: blue; */
+  color: blueviolet;
+}
+
+header a:hover {
+  color: crimson;
 }
 
 .timer {
@@ -28,9 +33,9 @@ header a {
   margin-right: 1%;
   font-size: 25px;
   font-weight: bolder;
-  /* background-color: blueviolet; */
 }
 
+/* STYLE MAIN PAGE */
 
 .start-btn {
   position: absolute;
@@ -48,7 +53,13 @@ header a {
   cursor: pointer;
 }
 
-.quiz-container p {
+.start-btn:hover {
+  cursor: pointer;
+  background: crimson;
+  color: #fff;
+}
+
+.intro-container p {
   position: absolute;
   top: 50%;
   left: 50%;
