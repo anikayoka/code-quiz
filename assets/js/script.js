@@ -1,5 +1,5 @@
 var timeLeft = 60;
-
+var timeInterval;
 var questions = [
   {
     question: "Commonly used data types do NOT include:",
@@ -29,7 +29,7 @@ var questions = [
 ];
 var index = 0
 
-var startQuiz = document.getElementById("start-quiz") 
+var startQuiz = document.getElementById("start-quiz")
 var questionContainer = document.getElementById("questions-container")
 var questionEl = document.getElementById("question")
 var option1EL = document.getElementById("option1")
@@ -40,24 +40,47 @@ var option4EL = document.getElementById("option4")
 var timerEl = document.getElementById('timer');
 
 option1EL.addEventListener('click', checkAnswer)
-option2EL.addEventListener('click', checkAnswer) 
-option3EL.addEventListener('click', checkAnswer) 
-option4EL.addEventListener('click', checkAnswer) 
+option2EL.addEventListener('click', checkAnswer)
+option3EL.addEventListener('click', checkAnswer)
+option4EL.addEventListener('click', checkAnswer)
+
+var correctAnswer = 0
 
 
 function checkAnswer() {
   console.log(this.textContent)
+  var answerCorrect = this.textContent
+  if (answerCorrect == questions[index].answer) {
+    correctAnswer += 5
+    document.getElementById("correct").classList.remove("hidden")
+  } else {
+    document.getElementById("wrong").classList.remove("hidden")
+    timeLeft -= 5
+  }
+  if (index < questions.length - 1) {
+    index++
+    setTimeout(function(){
+    displayQuestions()
+    },3000)
+  } else {
+    timerEl.textContent = timeLeft+' Great Work!';
+
+    clearInterval(timeInterval);
+
+    displayMessage();
+
+  }
 }
 
 
 // Timer that counts down from 60
 function timer() {
- 
+
 
   // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
-  var timeInterval = setInterval(function () {
+   timeInterval = setInterval(function () {
     // As long as the `timeLeft` is greater than 1
-    console.log (timeLeft)
+    console.log(timeLeft)
     timeLeft--
 
     if (timeLeft > 1) {
@@ -73,7 +96,7 @@ function timer() {
   }, 1000);
 }
 
-startQuiz.addEventListener ("click",function(){
+startQuiz.addEventListener("click", function () {
   questionContainer.classList.remove("hidden")
   document.getElementById("intro-container").classList.add("hidden")
   displayQuestions()
@@ -83,9 +106,15 @@ startQuiz.addEventListener ("click",function(){
 })
 
 function displayQuestions() {
-  questionEl.textContent=questions[index].question
-  option1EL.textContent=questions[index].choices[0]
-  option2EL.textContent=questions[index].choices[1]
-  option3EL.textContent=questions[index].choices[2]
-  option4EL.textContent=questions[index].choices[3]
+  questionEl.textContent = questions[index].question
+  option1EL.textContent = questions[index].choices[0]
+  option2EL.textContent = questions[index].choices[1]
+  option3EL.textContent = questions[index].choices[2]
+  option4EL.textContent = questions[index].choices[3]
+  document.getElementById("correct").classList.add("hidden")
+  document.getElementById("wrong").classList.add("hidden")
+}
+
+function displayMessage() {
+  questionContainer.classList.add("hidden")
 }

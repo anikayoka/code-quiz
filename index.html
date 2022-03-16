@@ -10,12 +10,13 @@
 </head>
 
 <!-- MAIN -->
+
 <body>
 
   <!-- HEADER -->
   <header>
     <a href="/highscores.html" id="highscore-btn">View Highscores</a>
-    
+
     <div class="timer">Time: <span id="timer">60</span></div>
   </header>
 
@@ -23,7 +24,9 @@
   <div class="seen" id="intro-container">
     <div class="intro-screen">
       <h1 class="page-title">Coding Quiz</h1>
-      <p>This a timed multiple choice quiz. You will have <span>60 seconds</span> to complete the quiz. <span>5 seconds</span> will decducted from the clock for every incorrect answer. Hit the button to begin! Good luck!</p>
+      <p>This a timed multiple choice quiz. You will have <span>60 seconds</span> to complete the quiz. <span>5
+          seconds</span> will decducted from the clock for every incorrect answer. Hit the button to begin! Good luck!
+      </p>
       <button class="start-btn" id="start-quiz">Start Quiz</button>
     </div>
   </div>
@@ -38,7 +41,15 @@
         <button id="option3"></button>
         <button id="option4"></button>
       </div>
-    </div>  
+    </div>
+    <!-- ALERTS -->
+    <div class="hidden" id="correct">
+      <h3>Correct!</h3>
+    </div>
+    <div class="hidden" id="wrong">
+      <h3>Wrong!</h3>
+    </div>
+
   </div>
 
   <!-- RESULTS -->
@@ -46,8 +57,9 @@
     <h2 id="results-done">ALL DONE!</h2>
     <form class="initials" id="results-initials">
       <p>Your final score is: <span id="final-score"></span></p>
-      <p>Enter Initials <input type="text" id="enter-initials" max="3" placeholder="Initials" /><button class="initials-btn" id="end-quiz" type="submit">Submit</button></p>
-    </form>  
+      <p>Enter Initials <input type="text" id="enter-initials" max="3" placeholder="Initials" /><button
+          class="initials-btn" id="end-quiz" type="submit">Submit</button></p>
+    </form>
   </div>
 
   <!-- HIGHSCORE -->
@@ -58,14 +70,6 @@
     <button class="btn" id="clear">Clear Highscores</button>
   </div>
 
-  <!-- ALERTS -->
-  <div class="hidden" id="correct">
-    <h3>Correct!</h3>
-  </div>
-
-  <div class="hidden" id="wrong">
-    <h3>Wrong!</h3>
-  </div>
 
   <script src="./assets/js/script.js"></script>
 </body>
