@@ -1,24 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@300&display=swap');
+
 *{
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
-  font-family: 'Spartan', sans-serif;
 }
 
 body {
   background-color: lightcyan;
+  margin: 0;
+  padding: 0;
+  font-family: 'Spartan', sans-serif;
 }
 
 /* STYLE HEADER */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  margin: 1% auto;
+  width: 95%;
+}
+
 header a {
-  position: absolute;
-  width: auto;
-  margin-left: 1%;
   text-decoration: none;
   font-size: 25px;
-  font-weight: 800px;
   color: blueviolet;
+  font-family: 'League Spartan', sans-serif;
 }
 
 header a:hover {
@@ -26,22 +32,47 @@ header a:hover {
 }
 
 .timer {
-  display: flex;
-  justify-content: flex-end;
-  margin-left: 50%;
-  margin-top: 1%;
-  margin-right: 1%;
+  display: inline;
+  text-align: right;
   font-size: 25px;
   font-weight: bolder;
 }
 
 /* STYLE MAIN PAGE */
 
+.intro-screen {
+  padding: 20px;
+  flex-direction: column;
+  width: 50%;
+  margin: auto;
+}
+
+.page-title {
+  text-align: center;
+  align-items: center;
+  font-size: 50px;
+  font-weight: 600px;
+  color: coral;
+}
+
+.intro-screen p {
+  text-align: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 300px;
+  line-height: 1.5;
+}
+
+span {
+  font-family: 'League Spartan', sans-serif;
+}
+
+.intro-screen button {
+  align-items: center;
+  margin: 5% 40%;
+}
+
 .start-btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   font-size: 25px;
   font-weight: 500;
   color:crimson;
@@ -59,31 +90,20 @@ header a:hover {
   color: #fff;
 }
 
-.intro-container p {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform:translate(-50%, -50%);
-  margin-top: -7.5%;
-  width: 50%;
-  display: flex;
-  align-items: center;
-  padding: 0, 35px;
-  font-size: 20px;
-  font-weight: 300px;
-  line-height: 1.5;
+/* STYLE QUESTIONS */
+
+.questions {
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 10px 20px;
+  margin: auto;
 }
 
-.page-title {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform:translate(-50%, -50%);
-  margin-top: -15%;
+
+.seen {
   display: flex;
-  align-self: center;
-  font-size: 50px;
-  font-weight: 600px;
-  color: coral;
 }
 
+.hidden {
+  display: none;
+}
