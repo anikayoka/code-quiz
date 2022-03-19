@@ -1,5 +1,7 @@
-var timeLeft = 60;
+var timeLeft = 45;
 var timeInterval;
+var results = 0;
+
 var questions = [
   {
     question: "Commonly used data types do NOT include:",
@@ -13,7 +15,7 @@ var questions = [
   },
   {
     question: "Arrays in JavaScript can be used to store:",
-    choices: ["a. Numbers and Strings", "b. Other Arrays", "c. Booleans", "d. All of the above"],
+    choices: ["a. Numbers & Strings", "b. Other Arrays", "c. Booleans", "d. All of the above"],
     answer: "d. All of the above"
   },
   {
@@ -29,6 +31,8 @@ var questions = [
 ];
 var index = 0
 
+
+// MAIN PAGE
 var startQuiz = document.getElementById("start-quiz")
 var questionContainer = document.getElementById("questions-container")
 var questionEl = document.getElementById("question")
@@ -47,6 +51,20 @@ option4EL.addEventListener('click', checkAnswer)
 var correctAnswer = 0
 
 
+var resultsContainer = document.getElementById("results-container")
+var finalScore = document.getElementById("final-score")
+var initialsEl = document.getElementById("results-initials")
+var submitBtn = document.getElementById("initlas-btn")
+
+
+var viewHighscore = document.getElementById("view-hs")
+var highscoreContainer = document.getElementById("hs-container")
+var scoreList = document.getElementById("highscores")
+var backBtn = document.getElementById("back")
+var clearBtn = document.getElementById("clear")
+
+// var score = timeLeft
+
 function checkAnswer() {
   console.log(this.textContent)
   var answerCorrect = this.textContent
@@ -61,39 +79,39 @@ function checkAnswer() {
     index++
     setTimeout(function(){
     displayQuestions()
-    },3000)
+    },1000)
   } else {
-    timerEl.textContent = timeLeft+' Great Work!';
+      displayResults();
 
     clearInterval(timeInterval);
-
+    
     displayMessage();
-
   }
 }
 
-
-// Timer that counts down from 60
+// Timer that counts down from 45
 function timer() {
-
-
   // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
    timeInterval = setInterval(function () {
     // As long as the `timeLeft` is greater than 1
     console.log(timeLeft)
     timeLeft--
 
-    if (timeLeft > 1) {
+    if (timeLeft > 0) {
       timerEl.textContent = timeLeft;
     } else {
       // Once `timeLeft` gets to 0, set `timerEl` to an empty string
-      timerEl.textContent = 'Time Up!!';
-      // Use `clearInterval()` to stop the timer
+      timerEl.textContent = '0';
+
+      displayResults();
+      
       clearInterval(timeInterval);
-      // Call the `displayMessage()` function
+     
       displayMessage();
     }
   }, 1000);
+  
+
 }
 
 startQuiz.addEventListener("click", function () {
@@ -118,3 +136,45 @@ function displayQuestions() {
 function displayMessage() {
   questionContainer.classList.add("hidden")
 }
+
+function displayResults() {
+  document.getElementById("results-container").classList.remove("hidden")
+  console.log(finalScore)
+  finalScore.textContent = timeLeft;
+}
+
+function highScore() {
+  submitBtn.addEventListener('click', function () {
+  
+    var id = initialsEl.value
+    var score = timeLeft;
+    var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
+    if(id.length > 0) {
+      var newScore = {
+        id,
+        score
+      }
+      console.log(id)
+      scoreList.classList.remove('hidden')
+      highscoreContainer.classList.add('hidden')
+      scoreList.classList.add('hidden')
+      highscores.push(newScore);
+      window.localStorage.setItem("highscores", JSON.stringify(highscores));
+
+      if (highscores !== undefined) {
+        highscores.sort(function(a,b) {
+          return b.score - a.score
+        })
+        highscores.forEach(function(score) { 
+          console.log(score)
+          var li = document.createElement("li");
+          li.innerHTML = "<h4>" + score.id + " " +score.score + "</h4>"
+          var ulEl = document.getElementById('newScores');
+          ulEl.appendChild(li)
+        })
+      }
+    }
+    console.log(highscores);
+  })     
+};
+
