@@ -67,6 +67,8 @@ var highscoreContainer = document.getElementById("hs-container")
 var scoreList = document.getElementById("highscores")
 var backBtn = document.getElementById("back")
 var clearBtn = document.getElementById("clear")
+var scoreEl = document.querySelector(".view-hs")
+
 
 var score = timeLeft
 
@@ -124,6 +126,7 @@ function timer() {
 startQuiz.addEventListener("click", function () {
   questionContainer.classList.remove("hidden")
   document.getElementById("intro-container").classList.add("hidden")
+  scoreEl.style.visibility = "hidden"
   displayQuestions()
   timer()
 })
@@ -163,7 +166,7 @@ function highScore() {
       console.log(id)
       headerEl.style.visibility = "hidden"
       scoreList.classList.remove('hidden')
-      highscoreContainer.classList.add('hidden')
+      highscoreContainer.classList.remove('hidden')
       resultsContainer.classList.add("hidden")
       highscores.push(newScore);
       window.localStorage.setItem("highscores", JSON.stringify(highscores));
@@ -209,7 +212,8 @@ viewHighscore.addEventListener('click', function () {
 
   headerEl.style.visibility = "hidden"
   scoreList.classList.remove('hidden')
-  highscoreContainer.classList.add('hidden')
+  highscoreContainer.classList.remove('hidden')
+  highscoreContainer.style.marginTop = "-75%"
   resultsContainer.classList.add("hidden")
   window.localStorage.setItem("highscores", JSON.stringify(highscores));
   highscoreContainer.classList.remove('hidden')
@@ -225,6 +229,7 @@ clearBtn.addEventListener("click", function () {
 })
 
 backBtn.addEventListener("click", function () {
+  document.getElementById("start-quiz")
   questionContainer.classList.add("hidden")
   document.getElementById("intro-container").classList.remove("hidden")
   resultsContainer.classList.add("hidden")
@@ -232,11 +237,12 @@ backBtn.addEventListener("click", function () {
   highscoreContainer.classList.add("hidden")
   headerEl.style.visibility = "visible";
   mainEl.style.visibility = "visible"
+  scoreEl.style.visibility = "visible" 
+  
+  displayQuestions()
   clearInterval(timeInterval)
   timerEl.textContent = 45
   timeLeft = 45
-  displayQuestions()
-  // timer()
-  startQuiz()
+  // startQuiz()
 })
 
