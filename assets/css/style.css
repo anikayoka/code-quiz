@@ -90,7 +90,8 @@ span {
 }
 
 .start-btn:hover,
-.initials button:hover {
+.initials button:hover,
+.btn:hover {
   cursor: pointer;
   background: crimson;
   color: #fff;
@@ -152,7 +153,8 @@ span {
 
 /* STYLE RESULTS */
 
-.results-wrapper {
+.results-wrapper,
+.hs-wrapper {
   padding: 100px 30px;
   flex-direction: column;
   width: 50%;
@@ -190,8 +192,40 @@ span {
   border-radius: 10px;
   background: #fff;
   cursor: pointer;
+  border: 1px solid crimson
 }
 
 #final-score {
   font-family: 'League Spartan', sans-serif;
+}
+
+
+/* STYLE HIGHSCORE */
+.hs-wrapper {
+  padding: 20px;
+  flex-direction: column;
+  width: 50%;
+}
+
+.hs-wrapper h2 {
+  font-size: 40px;
+  font-weight: 600px;
+  color: darkmagenta;
+}
+
+.hs-wrapper ol {
+  font-size: 15px;
+  text-align: left;
+  margin-left: 30%;
+}
+
+.btn {
+  color: crimson;
+  font-size: 15px;
+  padding:  1% 2%;
+  margin-left: 0%;
+  border-radius: 5px;
+  background: #fff;
+  cursor: pointer;
+  border: 1px solid crimson;
 }
