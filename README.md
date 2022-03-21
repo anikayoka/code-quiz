@@ -18,6 +18,8 @@ I got it done, but not without the stresses that come along with learning someth
 ## Website
 https://anikayoka.github.io/code-quiz/
 
+![screencapture-file-Users-anikamclean-projects-assignments-module04-code-quiz-index-html-2022-03-20-17_08_35](https://user-images.githubusercontent.com/88905488/159186178-1ec0ed52-7bbb-4bf2-b719-c53010305605.png)
+
 
 
 ## Contribution
