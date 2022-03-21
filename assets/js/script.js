@@ -65,7 +65,7 @@ var headerEl = document.querySelector("header")
 var viewHighscore = document.getElementById("view-hs")
 var highscoreContainer = document.getElementById("hs-container")
 var scoreList = document.getElementById("highscores")
-var backBtn = document.getElementById("back")
+// var backBtn = document.getElementById("back")
 var clearBtn = document.getElementById("clear")
 var scoreEl = document.querySelector(".view-hs")
 
@@ -125,8 +125,10 @@ function timer() {
 // Start quiz function
 startQuiz.addEventListener("click", function () {
   questionContainer.classList.remove("hidden")
+  document.getElementById("intro-container").classList.remove("seen")
   document.getElementById("intro-container").classList.add("hidden")
-  scoreEl.style.visibility = "hidden"
+  scoreEl.style.visibility = "hidden";
+  index=0;
   displayQuestions()
   timer()
 })
@@ -176,7 +178,7 @@ function highScore() {
           return b.score - a.score
         })
       }
-
+      document.getElementById('highscores').innerHTML = ""
       highscores.forEach(function (score) {
         console.log(score)
         var li = document.createElement("li");
@@ -194,7 +196,7 @@ function highScore() {
 
 viewHighscore.addEventListener('click', function () {
   var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
-
+  mainEl.style.display = "none"
   if (highscores.length > 1) {
     highscores.sort(function (a, b) {
       return b.score - a.score
@@ -213,11 +215,11 @@ viewHighscore.addEventListener('click', function () {
   headerEl.style.visibility = "hidden"
   scoreList.classList.remove('hidden')
   highscoreContainer.classList.remove('hidden')
-  highscoreContainer.style.marginTop = "-75%"
+  // highscoreContainer.style.marginTop = "-2.5%"
   resultsContainer.classList.add("hidden")
   window.localStorage.setItem("highscores", JSON.stringify(highscores));
   highscoreContainer.classList.remove('hidden')
-  mainEl.style.visibility = "hidden"
+ 
 
   console.log(highscores);
 });
@@ -238,8 +240,8 @@ backBtn.addEventListener("click", function () {
   headerEl.style.visibility = "visible";
   mainEl.style.visibility = "visible"
   scoreEl.style.visibility = "visible" 
-  
-  displayQuestions()
+  mainEl.style.display = "block"
+  // displayQuestions()
   clearInterval(timeInterval)
   timerEl.textContent = 45
   timeLeft = 45
